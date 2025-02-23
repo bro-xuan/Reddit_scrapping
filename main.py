@@ -23,7 +23,7 @@ print("Description:", subreddit.public_description)
 # File to store results
 filename = "puffin_posts.csv"
 
-batch_size = 20
+batch_size = 500
 
  
 # Function to scrape posts in batches
@@ -31,8 +31,8 @@ def scrape_puffin_posts():
     data = []
 
     # Scraping posts & Comments
-    ## for post in subreddit.search("Puffin", limit= batch_size, time_filter="all"): 
-    for post in subreddit.search("Puffin", time_filter="all", limit= batch_size, ):
+    ## for post in subreddit.search("Puffin", sort="new", time_filter="all", limit= batch_size): 
+    for post in subreddit.search("Puffin", sort="new", time_filter="all", limit= batch_size):
             if post.score > 1: 
                 data.append({
                     'Type': 'Post',
@@ -77,5 +77,3 @@ def scrape_puffin_posts():
 
 # Run the function
 scrape_puffin_posts()
-
-
